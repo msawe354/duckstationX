@@ -9,7 +9,7 @@ from functools import partial
 def is_game_path(path:str):
     lpath = path.lower()
     for extension in ["cue", "chd", "psxgpu", "psxgpu.zst", "psxgpu.xz"]:
-        if path.endswith(extension):
+        if lpath.endswith(extension):
             return True
     return False
 

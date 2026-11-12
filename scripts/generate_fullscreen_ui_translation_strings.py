@@ -78,7 +78,8 @@ assert start >= 0 and end > start
 
 new_area = ""
 for string in sorted(list(strings)):
-    new_area += f"TRANSLATE_NOOP(\"FullscreenUI\", \"{string}\");\n"
+    escaped = string.replace("\\", "\\\\").replace('"', '\\"')
+    new_area += f"TRANSLATE_NOOP(\"FullscreenUI\", \"{escaped}\");\n"
 
 full_source = full_source[:start+len(START_IDENT)+1] + new_area + full_source[end:]
 with open(dst_path, "w") as f:

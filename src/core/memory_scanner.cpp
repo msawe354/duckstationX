@@ -386,7 +386,11 @@ void MemoryWatchList::SetEntryDescription(u32 index, std::string description)
     return;
 
   Entry& entry = m_entries[index];
+  if (entry.description == description)
+    return;
+
   entry.description = std::move(description);
+  m_entries_changed = true;
 }
 
 void MemoryWatchList::SetEntryFreeze(u32 index, bool freeze)
